@@ -8,7 +8,7 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'shorturl.views.home', name='home'),
     url(r'^$', 'shorturl.views.home'),
-   
+    url(r'^(?P<short>.+)/$', 'shorturl.views.short_url_redirect'),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

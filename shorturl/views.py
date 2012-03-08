@@ -1,16 +1,30 @@
-from django.shortcuts import render_to_response 
+from django.shortcuts import render_to_response ,redirect
 from shorturl.forms import SueForm
 from shorturl.models import Sue
 from django.template import RequestContext
 from django.http import HttpResponse, HttpResponseRedirect
+import short_url_algorithm
+from django.core.exceptions import ObjectDoesNotExist
+import sys
 
-def short_from_id(key):
-import short_url
-  return str(id)
+def short_url_redirect(request,short):
+    try:
+        s_id = short_url_algorithm.decode_url(short)        
+        original = Sue.objects.get(id= s_id).original
+        return redirect(original)
+    except ObjectDoesNotExist,e :
+        original = '/' 
+        return HttpResponseRedirect('/')
+    except ValueError,e :
+        original = '/'
+        
+        return HttpResponseRedirect('/')
+ 
 def home(request):
     stored = Sue.objects.all()
     for s in stored:
-      s.short = short_from_id(s.id)
+      s.short = short_url_algorithm.encode_url(s.id)
+
     if request.method == 'POST': # If the form has been submitted...
         sue_form = SueForm(request.POST) # A form bound to the POST data
         if sue_form.is_valid(): # All validation rules pass
