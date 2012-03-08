@@ -36,23 +36,24 @@ def home(request):
         sue_form = SueForm(request.POST) # A form bound to the POST data
         
         if sue_form.is_valid():
-            o = sue_form.cleaned_data['original']
+            sue = sue_form.save(commit=False)
+            o = sue.original
             o_lower = o.lower()
             if o_lower.startswith('http://') ==False and o_lower.startswith('https://') == False:
-                o = 'http://'+o
-                sur_form.cleaned_data['original'] = o
+                sue.original = 'http://'+sue.original
             try:
-                val(o)
+                val(sue.original)
             except ValidationError, e:
                 #TODO-victor: redirect with a error message
-                print e
                 return HttpResponseRedirect('/')
             try:
                 print 'xxx3'
-                sue = Sue.objects.get(original = o)
+                # Check if we already have it
+                sue = Sue.objects.get(original = sue.original)
             except :
+                print 'xxx4'
                 # Here we insert a new entry
-                sue_form.save()
+                sue.save()
                 return HttpResponseRedirect('/') # Redirect after POST
             return HttpResponseRedirect('/') # Redirect after POST
  
