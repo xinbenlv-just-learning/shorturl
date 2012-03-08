@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+  <form action="/" method="post">
+  {% csrf_token %}
+
+  {% for field in sue_form %}
+      <div class="fieldWrapper">
+          {{ field.errors }}
+          {{ field.label_tag }}: {{ field }}
+      </div>
+  {% endfor %}
+  <p><input type="submit" value="Submit" /></p>
+  </form>
+  <h2>Stored Url Entries</h2>
+  <div>  
+  {% for s in stored %}
+  <div>Short</div><div>Original</div>
+  <div>{{s.short}}</div><div>{{s.original}}</div>
+  {% endfor %}
+  </div>
+{% endblock %}
+
