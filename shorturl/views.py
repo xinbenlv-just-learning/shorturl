@@ -16,13 +16,17 @@ def short_url_redirect(request,short):
         original = Sue.objects.get(id= s_id).original
         return redirect(original)
     except ObjectDoesNotExist,e :
-        original = '/' 
-        return HttpResponseRedirect('/')
+        original = 'http://google.com' 
+        return render_to_response('redirect.html', {
+            'url':original
+        },RequestContext(request))  
     except ValueError,e :
-        original = '/'
-        
-        return HttpResponseRedirect('/')
+        original = 'http://google.com' 
  
+        return render_to_response('redirect.html', {
+            'url':original
+        },RequestContext(request))  
+     
 def home(request):
     stored = Sue.objects.all()
     for s in stored:
