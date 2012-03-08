@@ -40,6 +40,7 @@ def home(request):
             o_lower = o.lower()
             if o_lower.startswith('http://') ==False and o_lower.startswith('https://') == False:
                 o = 'http://'+o
+                sur_form.cleaned_data['original'] = o
             try:
                 val(o)
             except ValidationError, e:
