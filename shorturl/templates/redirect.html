@@ -1,6 +1,6 @@
-<html>
-<head>
+{% extends 'base.html' %}
+{% block additional_meta %}
 <META HTTP-EQUIV=Refresh CONTENT="3; URL={{url}}">
-You're going to be redirect to {{url}} in 3 seconds.
-</head>
-</html>
+You're leaving our-website and is going to {{url}} in 3 seconds.
+Good luck!
+{% endblock %}
