@@ -8,7 +8,7 @@ from django.core.exceptions import ObjectDoesNotExist
 import sys
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
-
+import datetime
 val = URLValidator(verify_exists=False)
 def short_url_redirect(request,short):
     try:
@@ -37,6 +37,9 @@ def home(request):
         
         if sue_form.is_valid():
             sue = sue_form.save(commit=False)
+            sue.count=0;
+            sue.created_date=datetime.datetime.now()
+            print "xxx"
             o = sue.original
             o_lower = o.lower()
             if o_lower.startswith('http://') ==False and o_lower.startswith('https://') == False:
@@ -47,11 +50,9 @@ def home(request):
                 #TODO-victor: redirect with a error message
                 return HttpResponseRedirect('/')
             try:
-                print 'xxx3'
                 # Check if we already have it
                 sue = Sue.objects.get(original = sue.original)
             except :
-                print 'xxx4'
                 # Here we insert a new entry
                 sue.save()
                 return HttpResponseRedirect('/') # Redirect after POST
@@ -63,4 +64,6 @@ def home(request):
     return render_to_response('index.html', {
         'sue_form': sue_form,
         'stored': stored,
+        'current_path': request.get_full_path(),
+
     },RequestContext(request))  

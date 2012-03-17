@@ -1,5 +1,6 @@
 clean:
 	$(RM) *~ *.pyc static/* *.swp -r
-flush:
-	$(RM) *~ *.pyc static/* *.swp -r
-	./manage.py flush  
+refresh:
+	$(RM) *~ *.pyc static/* *.swp shorturl_db -r 
+	./manage.py syncdb --noinput
+    
