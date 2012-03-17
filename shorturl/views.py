@@ -14,7 +14,11 @@ val = URLValidator(verify_exists=False)
 def short_url_redirect(request,short):
     try:
         s_id = short_url_algorithm.decode_url(short)        
-        original = Sue.objects.get(id= s_id).original
+         
+        sue = Sue.objects.get(id= s_id)
+        original = sue.original
+        sue.count = sue.count + 1
+        sue.save()
         return redirect(original)
     except ObjectDoesNotExist,e :
         original = 'http://google.com' 
