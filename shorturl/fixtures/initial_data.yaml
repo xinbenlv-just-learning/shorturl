@@ -26,11 +26,11 @@
   model: sites.site
   pk: 1
 - fields: {count: 0, created_date: !!timestamp '2012-03-17 00:20:24.782181', original: 'http://google.com',
-    owner: null, short: ''}
+    owner: null}
   model: shorturl.sue
   pk: 2
 - fields: {count: 0, created_date: !!timestamp '2012-03-16 23:51:43.377135', original: 'http://sina.com',
-    owner: null, short: ''}
+    owner: null}
   model: shorturl.sue
   pk: 1
 - fields: {codename: add_group, content_type: 2, name: Can add group}

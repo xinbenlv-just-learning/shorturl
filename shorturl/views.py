@@ -21,12 +21,12 @@ def short_url_redirect(request,short):
         sue.save()
         return redirect(original)
     except ObjectDoesNotExist,e :
-        original = 'http://google.com' 
+        original = 'http://u.zzn.im' 
         return render_to_response('redirect.html', {
             'url':original
         },RequestContext(request))  
     except ValueError,e :
-        original = 'http://google.com' 
+        original = 'http://u.zzn.im' 
  
         return render_to_response('redirect.html', {
             'url':original
@@ -71,4 +71,9 @@ def home(request):
         'stored': stored,
         'current_path': request.get_full_path(),
         'myurl': settings.PROJECT_DOMAIN,
-    },RequestContext(request))  
+    },RequestContext(request)) 
+
+def contact(request):
+    return HttpResponseRedirect('http://www.zzn.im')   
+def about(request):
+    return render_to_response('about.html', {},RequestContext(request))   

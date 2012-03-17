@@ -23,12 +23,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">{% block current_page_subtitle %} {% endblock %}</a>
+          <a class="brand" href="#">Short URL Service</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="http://www.zzn.im/about">About</a></li>
-              <li><a href="http://www.zzn.im/contact">Contact</a></li>
+              <li class="active"><a href="/">Home</a></li>
+              <li><a href="/page/about">About</a></li>
+              <li><a href="/page/contact">Contact</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -36,21 +36,12 @@
     </div>
 
     <div class="container">
-      <div class="container">
-        <div class="row">
-          <div class="span8">
+        <div class="row center">
           
             <!--Body content-->
             {% block content %} {% endblock %}
             <!--End of body content-->
-          </div>
-          <div class="span4">       
-          <!--Sidebar content-->
-          </div>
         </div>
-      </div>
-
-
     </div> <!-- /container -->
 
     <!-- Le javascript
@@ -61,5 +52,9 @@
 
 
 </body>
-
+<footer>
+<div class="container center">
+<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Short URL</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://u.zzn.im" property="cc:attributionName" rel="cc:attributionURL">Zainan Victor Zhou</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.<br />Permissions beyond the scope of this license may be available at <a xmlns:cc="http://creativecommons.org/ns#" href="http://u.zzn.im/page/about" rel="cc:morePermissions">http://u.zzn.im/page/about</a>.
+</div>
+</footer>
 </html>

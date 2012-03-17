@@ -7,7 +7,6 @@
     <form action="/" method="post">
     
     {% csrf_token %}
-    <div class="row">{{sue_form.original.errors}}</div>
     <div class="row">
         <div class="span6"><input type="textarea" name="original" class="span6" id="id_original" /></div>
         <div class="span2"><button type="submit" class="btn btn-primary span2" >Shorten</button></div>
