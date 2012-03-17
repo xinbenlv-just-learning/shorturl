@@ -8,6 +8,7 @@ from django.core.exceptions import ObjectDoesNotExist
 import sys
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
+import settings
 import datetime
 val = URLValidator(verify_exists=False)
 def short_url_redirect(request,short):
@@ -65,5 +66,5 @@ def home(request):
         'sue_form': sue_form,
         'stored': stored,
         'current_path': request.get_full_path(),
-
+        'myurl': settings.PROJECT_DOMAIN,
     },RequestContext(request))  

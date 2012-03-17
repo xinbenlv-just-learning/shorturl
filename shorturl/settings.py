@@ -1,7 +1,7 @@
 # Django settings for shorturl project.
 import os
 PROJECT_DIR = os.path.normpath(os.path.dirname(__file__))
-
+PROJECT_DOMAIN = 'u.zzn.im'
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
